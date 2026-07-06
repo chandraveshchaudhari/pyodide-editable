@@ -27,5 +27,16 @@ jobs:
         with:
           path: ./docs
 
-      - id: deployment
+      - id: deployment_primary
+        continue-on-error: true
         uses: actions/deploy-pages@v5
+
+      - id: deployment_retry
+        if: steps.deployment_primary.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+
+      - name: Fail if both deploy attempts failed
+        if: steps.deployment_primary.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
+        run: |
+          echo "GitHub Pages deployment failed twice."
+          exit 1
