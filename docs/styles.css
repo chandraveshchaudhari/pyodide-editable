@@ -124,6 +124,13 @@ h2 {
   font-weight: 700;
 }
 
+.build-note {
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
 .hero-card ul {
   padding-left: 1.1rem;
   margin: 1rem 0 0;
