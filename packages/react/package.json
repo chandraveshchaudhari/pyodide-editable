@@ -1,6 +1,6 @@
 {
   "name": "@chandraveshchaudhari/pyodide-editable-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React component for pyodide_editable.",
   "type": "module",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
   },
-  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable/tree/main/packages/react",
+  "homepage": "https://chandraveshchaudhari.github.io/pyodide-editable/#react",
   "keywords": [
     "pyodide",
     "python",

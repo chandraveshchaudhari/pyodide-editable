@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pyodide_editable Demo</title>
+    <meta
+      name="description"
+      content="GitHub Pages demo for pyodide_editable HTML, MyST, React, and Vue code cells."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">GitHub Pages Demo</p>
+          <h1>pyodide_editable</h1>
+          <p class="lede">
+            Editable Python cells running in the browser with one shared Pyodide runtime.
+            This page exercises the published HTML, MyST, React, and Vue packages.
+          </p>
+          <div class="hero-links">
+            <a href="https://github.com/chandraveshchaudhari/pyodide-editable" target="_blank" rel="noreferrer">GitHub Repo</a>
+            <a href="https://www.npmjs.com/~chandraveshchaudhari" target="_blank" rel="noreferrer">npm Profile</a>
+          </div>
+        </div>
+        <div class="hero-card" id="core-runtime">
+          <h2>Core Runtime</h2>
+          <p>One widget renderer powers every wrapper. Run cells, restart the kernel, and render matplotlib output fully in the browser.</p>
+          <ul>
+            <li>Pyodide runtime via jsDelivr</li>
+            <li>Shared output, figures, and kernel controls</li>
+            <li>Used by HTML, MyST, React, and Vue integrations</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="demo-grid">
+        <article class="demo-card" id="html">
+          <header>
+            <p class="chip">HTML</p>
+            <h2>Plain HTML Helper</h2>
+            <p>Uses the published browser helper directly from npm delivery CDNs.</p>
+          </header>
+          <div class="demo-surface" id="html-demo"></div>
+        </article>
+
+        <article class="demo-card" id="react">
+          <header>
+            <p class="chip">React</p>
+            <h2>React Wrapper</h2>
+            <p>Renders the published React component with a browser ESM import.</p>
+          </header>
+          <div class="demo-surface" id="react-demo"></div>
+        </article>
+
+        <article class="demo-card" id="vue">
+          <header>
+            <p class="chip">Vue</p>
+            <h2>Vue Wrapper</h2>
+            <p>Mounts the published Vue component with no local build step.</p>
+          </header>
+          <div class="demo-surface" id="vue-demo"></div>
+        </article>
+
+        <article class="demo-card" id="myst">
+          <header>
+            <p class="chip">MyST</p>
+            <h2>MyST Directive Adapter</h2>
+            <p>The demo runs the published directive plugin to generate widget model data, then renders it with the shared runtime.</p>
+          </header>
+          <div class="myst-layout">
+            <pre class="code-sample"><code>```{pyodide}
+import math
+print("sin(0.5) =", round(math.sin(0.5), 4))
+```
+</code></pre>
+            <div class="demo-surface" id="myst-demo"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

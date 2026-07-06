@@ -1,6 +1,6 @@
 {
   "name": "@chandraveshchaudhari/pyodide-editable-html",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Plain HTML helpers for pyodide_editable.",
   "type": "module",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
   },
-  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable/tree/main/packages/html",
+  "homepage": "https://chandraveshchaudhari.github.io/pyodide-editable/#html",
   "keywords": [
     "pyodide",
     "python",

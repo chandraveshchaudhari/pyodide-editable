@@ -2,6 +2,8 @@
 
 Editable Pyodide-backed Python cells for MyST and JavaScript applications.
 
+Live demo: https://chandraveshchaudhari.github.io/pyodide-editable/
+
 This repository is organized as an npm workspace while preserving the original
 MyST plugin behavior.
 
@@ -15,6 +17,8 @@ MyST plugin behavior.
 
 Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). Source code, issues, and release history live in the [pyodide-editable GitHub repository](https://github.com/chandraveshchaudhari/pyodide-editable).
 
+The live GitHub Pages demo exercises the plain HTML helper, React wrapper, Vue wrapper, and the MyST directive adapter on one page: https://chandraveshchaudhari.github.io/pyodide-editable/
+
 ## Plain HTML Usage
 
 After the packages are published to npm, a basic webpage can use the HTML
@@ -24,7 +28,7 @@ package through a CDN:
 <div id="cell"></div>
 
 <script type="module">
-  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.1/browser.mjs";
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.2/browser.mjs";
 
   createPyCell(document.getElementById("cell"), {
     code: "print('Hello from Pyodide')",
@@ -74,4 +78,4 @@ Configure each npm package with the same Trusted Publisher:
 - Allowed action: `npm publish`
 
 Then run the `Publish to npm` workflow from GitHub Actions, or push a release
-tag such as `v0.1.1`.
+tag such as `v0.1.2`.

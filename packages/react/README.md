@@ -2,6 +2,8 @@
 
 React wrapper component for editable Pyodide-backed Python cells.
 
+Live demo: https://chandraveshchaudhari.github.io/pyodide-editable/#react
+
 Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). Source, issues, and examples live in the [pyodide-editable GitHub repository](https://github.com/chandraveshchaudhari/pyodide-editable/tree/main/packages/react).
 
 ## Install

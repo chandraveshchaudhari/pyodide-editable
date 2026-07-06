@@ -1,7 +1,7 @@
 {
   "name": "pyodide_editable",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Editable Pyodide-backed Python cells for MyST, HTML, React, and Vue.",
   "type": "module",
   "license": "MIT",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
   },
-  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable#readme",
+  "homepage": "https://chandraveshchaudhari.github.io/pyodide-editable/",
   "devDependencies": {
     "@types/react": "^18.3.18",
     "@vitejs/plugin-react": "^4.3.4",
