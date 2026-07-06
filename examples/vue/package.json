@@ -1,12 +1,12 @@
 {
-  "name": "@pyodide-editable/example-vue",
+  "name": "@chandraveshchaudhari/pyodide-editable-example-vue",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0"
   },
   "dependencies": {
-    "@pyodide-editable/vue": "workspace:*",
+    "@chandraveshchaudhari/pyodide-editable-vue": "workspace:*",
     "vite": "^6.0.7",
     "vue": "^3.5.13"
   },

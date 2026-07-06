@@ -1,5 +1,5 @@
 import { defineComponent, h, onMounted, ref, watch } from "vue";
-import { render } from "@pyodide-editable/core";
+import { render } from "@chandraveshchaudhari/pyodide-editable-core";
 
 export const PyCell = defineComponent({
   name: "PyCell",

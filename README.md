@@ -7,11 +7,13 @@ MyST plugin behavior.
 
 ## Packages
 
-- `@pyodide-editable/core`: shared browser runtime and widget renderer.
-- `@pyodide-editable/myst`: MyST directive package.
-- `@pyodide-editable/html`: small DOM helper for plain HTML pages.
-- `@pyodide-editable/react`: React wrapper component.
-- `@pyodide-editable/vue`: Vue wrapper component.
+- `@chandraveshchaudhari/pyodide-editable-core`: shared browser runtime and widget renderer.
+- `@chandraveshchaudhari/pyodide-editable-myst`: MyST directive package.
+- `@chandraveshchaudhari/pyodide-editable-html`: small DOM helper for plain HTML pages.
+- `@chandraveshchaudhari/pyodide-editable-react`: React wrapper component.
+- `@chandraveshchaudhari/pyodide-editable-vue`: Vue wrapper component.
+
+Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). Source code, issues, and release history live in the [pyodide-editable GitHub repository](https://github.com/chandraveshchaudhari/pyodide-editable).
 
 ## Plain HTML Usage
 
@@ -22,7 +24,7 @@ package through a CDN:
 <div id="cell"></div>
 
 <script type="module">
-  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@pyodide-editable/html@0.1.0/browser.mjs";
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.0/browser.mjs";
 
   createPyCell(document.getElementById("cell"), {
     code: "print('Hello from Pyodide')",
@@ -37,7 +39,7 @@ Add the MyST plugin:
 ```yaml
 project:
   plugins:
-    - node_modules/@pyodide-editable/myst/pyodide-editable.mjs
+    - node_modules/@chandraveshchaudhari/pyodide-editable-myst/pyodide-editable.mjs
 ```
 
 Then add a cell:

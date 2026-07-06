@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { render } from "@pyodide-editable/core";
+import { render } from "@chandraveshchaudhari/pyodide-editable-core";
 
 export function PyCell({ code = "", id = "", packages = "" }) {
   const ref = useRef(null);

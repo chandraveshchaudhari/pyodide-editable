@@ -1,9 +1,10 @@
 {
-  "name": "@pyodide-editable/react",
+  "name": "@chandraveshchaudhari/pyodide-editable-react",
   "version": "0.1.0",
   "description": "React component for pyodide_editable.",
   "type": "module",
   "license": "MIT",
+  "author": "Chandravesh Chaudhari (https://github.com/chandraveshchaudhari)",
   "publishConfig": {
     "access": "public"
   },
@@ -12,6 +13,10 @@
     "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git",
     "directory": "packages/react"
   },
+  "bugs": {
+    "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
+  },
+  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable/tree/main/packages/react",
   "keywords": [
     "pyodide",
     "python",
@@ -21,13 +26,14 @@
     ".": "./src/index.jsx"
   },
   "files": [
+    "README.md",
     "src"
   ],
   "peerDependencies": {
     "react": ">=18"
   },
   "dependencies": {
-    "@pyodide-editable/core": "workspace:^"
+    "@chandraveshchaudhari/pyodide-editable-core": "workspace:^"
   },
   "scripts": {
     "build": "node ../../scripts/check-package.mjs react",

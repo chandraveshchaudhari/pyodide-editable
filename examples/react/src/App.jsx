@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { PyCell } from "@pyodide-editable/react";
+import { PyCell } from "@chandraveshchaudhari/pyodide-editable-react";
 
 function App() {
   return <PyCell code="print('Hello from Pyodide')" />;

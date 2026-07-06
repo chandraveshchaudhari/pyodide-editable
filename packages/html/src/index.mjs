@@ -1,4 +1,4 @@
-import { render } from "@pyodide-editable/core";
+import { render } from "@chandraveshchaudhari/pyodide-editable-core";
 
 export function createPyCell(el, options = {}) {
   render({

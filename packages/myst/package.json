@@ -1,9 +1,10 @@
 {
-  "name": "@pyodide-editable/myst",
+  "name": "@chandraveshchaudhari/pyodide-editable-myst",
   "version": "0.1.0",
   "description": "MyST directive package for pyodide_editable.",
   "type": "module",
   "license": "MIT",
+  "author": "Chandravesh Chaudhari (https://github.com/chandraveshchaudhari)",
   "publishConfig": {
     "access": "public"
   },
@@ -12,6 +13,10 @@
     "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git",
     "directory": "packages/myst"
   },
+  "bugs": {
+    "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
+  },
+  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable/tree/main/packages/myst",
   "keywords": [
     "pyodide",
     "python",
@@ -24,11 +29,12 @@
     "./widget.mjs": "./widget.mjs"
   },
   "files": [
+    "README.md",
     "pyodide-editable.mjs",
     "widget.mjs"
   ],
   "dependencies": {
-    "@pyodide-editable/core": "workspace:^"
+    "@chandraveshchaudhari/pyodide-editable-core": "workspace:^"
   },
   "scripts": {
     "build": "node ../../scripts/check-package.mjs myst",

@@ -5,13 +5,14 @@
   "description": "Editable Pyodide-backed Python cells for MyST, HTML, React, and Vue.",
   "type": "module",
   "license": "MIT",
+  "author": "Chandravesh Chaudhari (https://github.com/chandraveshchaudhari)",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "build": "pnpm -r build",
-    "check": "pnpm -r check",
-    "lint": "pnpm -r lint",
-    "test": "pnpm -r test",
-    "publish:packages": "pnpm -r --filter './packages/*' publish --access public --no-git-checks"
+    "build": "corepack pnpm -r build",
+    "check": "corepack pnpm -r check",
+    "lint": "corepack pnpm -r lint",
+    "test": "corepack pnpm -r test",
+    "publish:packages": "corepack pnpm -r --filter './packages/*' publish --access public --no-git-checks"
   },
   "repository": {
     "type": "git",

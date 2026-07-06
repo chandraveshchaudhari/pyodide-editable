@@ -29,7 +29,7 @@ importers:
 
   examples/react:
     dependencies:
-      '@pyodide-editable/react':
+      '@chandraveshchaudhari/pyodide-editable-react':
         specifier: workspace:*
         version: link:../../packages/react
       react:
@@ -48,7 +48,7 @@ importers:
 
   examples/vue:
     dependencies:
-      '@pyodide-editable/vue':
+      '@chandraveshchaudhari/pyodide-editable-vue':
         specifier: workspace:*
         version: link:../../packages/vue
       vite:
@@ -66,19 +66,19 @@ importers:
 
   packages/html:
     dependencies:
-      '@pyodide-editable/core':
+      '@chandraveshchaudhari/pyodide-editable-core':
         specifier: workspace:^
         version: link:../core
 
   packages/myst:
     dependencies:
-      '@pyodide-editable/core':
+      '@chandraveshchaudhari/pyodide-editable-core':
         specifier: workspace:^
         version: link:../core
 
   packages/react:
     dependencies:
-      '@pyodide-editable/core':
+      '@chandraveshchaudhari/pyodide-editable-core':
         specifier: workspace:^
         version: link:../core
       react:
@@ -87,7 +87,7 @@ importers:
 
   packages/vue:
     dependencies:
-      '@pyodide-editable/core':
+      '@chandraveshchaudhari/pyodide-editable-core':
         specifier: workspace:^
         version: link:../core
       vue:

@@ -1,5 +1,5 @@
 import { createApp, h } from "vue";
-import { PyCell } from "@pyodide-editable/vue";
+import { PyCell } from "@chandraveshchaudhari/pyodide-editable-vue";
 
 createApp({
   render() {

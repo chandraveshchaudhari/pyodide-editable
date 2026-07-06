@@ -20,7 +20,6 @@ jobs:
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
-          package-manager-cache: false
 
       - name: Use latest npm for OIDC
         run: npm install -g npm@latest
@@ -48,13 +47,15 @@ jobs:
       - name: Publish packages
         run: |
           set -euo pipefail
-          for package in \
-            "$GITHUB_WORKSPACE"/dist-packages/pyodide-editable-core-*.tgz \
-            "$GITHUB_WORKSPACE"/dist-packages/pyodide-editable-html-*.tgz \
-            "$GITHUB_WORKSPACE"/dist-packages/pyodide-editable-myst-*.tgz \
-            "$GITHUB_WORKSPACE"/dist-packages/pyodide-editable-react-*.tgz \
-            "$GITHUB_WORKSPACE"/dist-packages/pyodide-editable-vue-*.tgz
+          cd "$GITHUB_WORKSPACE"
+          shopt -s nullglob
+          packages=(
+            ./dist-packages/*.tgz
+          )
+
+          test "${#packages[@]}" -gt 0
+
+          for package in "${packages[@]}"
           do
-            test -f "$package"
             npm publish "$package" --access public
           done
