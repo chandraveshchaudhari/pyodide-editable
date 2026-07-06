@@ -85,9 +85,10 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  overflow-wrap: normal;
+  word-break: normal;
+  letter-spacing: 0.01em;
 }
 
 h2 {
@@ -126,6 +127,45 @@ h2 {
   font-size: 0.82rem;
   letter-spacing: 0.02em;
   color: var(--muted);
+}
+
+.creator-card {
+  margin-top: 1.1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.creator-card h2 {
+  margin: 0.15rem 0 0.55rem;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+}
+
+.creator-card p {
+  margin: 0.55rem 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.creator-links {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.creator-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 0.78rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--sand);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .hero-card ul {
@@ -251,6 +291,10 @@ h2 {
   .demo-grid,
   .myst-layout {
     grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 
   .page-shell {
