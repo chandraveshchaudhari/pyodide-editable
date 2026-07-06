@@ -67,19 +67,19 @@ importers:
   packages/html:
     dependencies:
       '@pyodide-editable/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
 
   packages/myst:
     dependencies:
       '@pyodide-editable/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
 
   packages/react:
     dependencies:
       '@pyodide-editable/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       react:
         specifier: '>=18'
@@ -88,7 +88,7 @@ importers:
   packages/vue:
     dependencies:
       '@pyodide-editable/core':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../core
       vue:
         specifier: '>=3'

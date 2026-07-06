@@ -4,6 +4,20 @@
   "description": "Plain HTML helpers for pyodide_editable.",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git",
+    "directory": "packages/html"
+  },
+  "keywords": [
+    "pyodide",
+    "python",
+    "browser",
+    "html"
+  ],
   "exports": {
     ".": "./src/index.mjs"
   },
@@ -11,7 +25,7 @@
     "src"
   ],
   "dependencies": {
-    "@pyodide-editable/core": "workspace:*"
+    "@pyodide-editable/core": "workspace:^"
   },
   "scripts": {
     "build": "node ../../scripts/check-package.mjs html",

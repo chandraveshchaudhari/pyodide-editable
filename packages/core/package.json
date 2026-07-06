@@ -4,6 +4,20 @@
   "description": "Shared Pyodide runtime and widget renderer for pyodide_editable.",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "pyodide",
+    "python",
+    "browser",
+    "anywidget"
+  ],
   "exports": {
     ".": "./src/index.mjs",
     "./widget": "./src/widget.mjs",

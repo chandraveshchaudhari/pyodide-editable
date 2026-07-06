@@ -4,6 +4,19 @@
   "description": "React component for pyodide_editable.",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "pyodide",
+    "python",
+    "react"
+  ],
   "exports": {
     ".": "./src/index.jsx"
   },
@@ -14,7 +27,7 @@
     "react": ">=18"
   },
   "dependencies": {
-    "@pyodide-editable/core": "workspace:*"
+    "@pyodide-editable/core": "workspace:^"
   },
   "scripts": {
     "build": "node ../../scripts/check-package.mjs react",

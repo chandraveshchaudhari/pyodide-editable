@@ -10,8 +10,17 @@
     "build": "pnpm -r build",
     "check": "pnpm -r check",
     "lint": "pnpm -r lint",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "publish:packages": "pnpm -r --filter './packages/*' publish --access public --no-git-checks"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandraveshchaudhari/pyodide-editable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chandraveshchaudhari/pyodide-editable/issues"
+  },
+  "homepage": "https://github.com/chandraveshchaudhari/pyodide-editable#readme",
   "devDependencies": {
     "@types/react": "^18.3.18",
     "@vitejs/plugin-react": "^4.3.4",
