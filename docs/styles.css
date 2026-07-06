@@ -41,10 +41,7 @@ a {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: 1.25rem;
-  align-items: stretch;
+  display: block;
 }
 
 .hero-copy,
@@ -138,6 +135,10 @@ h2 {
 
 .hero-card h2 {
   margin-top: 0.15rem;
+}
+
+.core-runtime-section {
+  margin-top: 1.25rem;
 }
 
 .guide-section {
