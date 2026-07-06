@@ -19,6 +19,17 @@ Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). 
 
 The live GitHub Pages demo exercises the plain HTML helper, React wrapper, Vue wrapper, and the MyST directive adapter on one page: https://chandraveshchaudhari.github.io/pyodide-editable/
 
+## Beginner Quick Start
+
+1. Open the live demo and try each editor type:
+  1. HTML
+  2. React
+  3. Vue
+  4. MyST
+2. In any editor, click `Run` or press `Shift+Enter`.
+3. Use `Clear` to remove output and `Restart` to reset runtime state.
+4. Once comfortable, copy the matching integration snippet below into your project.
+
 ## Plain HTML Usage
 
 After the packages are published to npm, a basic webpage can use the HTML
@@ -28,12 +39,52 @@ package through a CDN:
 <div id="cell"></div>
 
 <script type="module">
-  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.3/browser.mjs";
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@latest/browser.mjs";
 
   createPyCell(document.getElementById("cell"), {
     code: "print('Hello from Pyodide')",
   });
 </script>
+```
+
+## React Usage
+
+```bash
+npm install @chandraveshchaudhari/pyodide-editable-react react react-dom
+```
+
+```jsx
+import { PyCell } from "@chandraveshchaudhari/pyodide-editable-react";
+
+export default function App() {
+  return (
+    <PyCell
+      id="react-cell-1"
+      code={"print('Hello from React')"}
+      packages={["numpy"]}
+    />
+  );
+}
+```
+
+## Vue Usage
+
+```bash
+npm install @chandraveshchaudhari/pyodide-editable-vue vue
+```
+
+```vue
+<script setup>
+import { PyCell } from "@chandraveshchaudhari/pyodide-editable-vue";
+</script>
+
+<template>
+  <PyCell
+    id="vue-cell-1"
+    code="print('Hello from Vue')"
+    :packages="['numpy']"
+  />
+</template>
 ```
 
 ## MyST Usage
@@ -56,11 +107,30 @@ print("Hello from Pyodide")
 
 The original directive names and options are preserved.
 
+Use options to set cell id or packages:
+
+````markdown
+```{pyodide}
+:id: intro-cell
+:packages: numpy,pandas
+
+import numpy as np
+print(np.arange(5))
+```
+````
+
 ## Development
 
 ```bash
 pnpm install
 pnpm check
+```
+
+To preview the demo locally:
+
+```bash
+python3 -m http.server 4173
+# open http://localhost:4173/projects/tools/pyodide-editable/docs/
 ```
 
 ## Publishing

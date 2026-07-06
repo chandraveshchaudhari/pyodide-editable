@@ -9,7 +9,7 @@ Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). 
 ## Install
 
 ```bash
-npm install @chandraveshchaudhari/pyodide-editable-vue
+npm install @chandraveshchaudhari/pyodide-editable-vue vue
 ```
 
 ## Use In Vue
@@ -17,3 +17,33 @@ npm install @chandraveshchaudhari/pyodide-editable-vue
 ```js
 import { PyCell } from "@chandraveshchaudhari/pyodide-editable-vue";
 ```
+
+```vue
+<script setup>
+import { PyCell } from "@chandraveshchaudhari/pyodide-editable-vue";
+</script>
+
+<template>
+	<section>
+		<h2>Interactive Python Cell</h2>
+		<PyCell
+			id="vue-cell-1"
+			code="print('Hello from Vue wrapper')"
+			:packages="['numpy']"
+		/>
+	</section>
+</template>
+```
+
+## Props
+
+- `id` (string): optional unique id.
+- `code` (string): Python source.
+- `packages` (string or string[]): optional packages to preload.
+
+## Demo Walkthrough
+
+Open:
+https://chandraveshchaudhari.github.io/pyodide-editable/#vue
+
+Try updating the code and running with `Shift+Enter`.
