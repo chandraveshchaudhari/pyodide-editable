@@ -1,6 +1,6 @@
 {
   "name": "@chandraveshchaudhari/pyodide-editable-vue",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Vue component for pyodide_editable.",
   "type": "module",
   "license": "MIT",

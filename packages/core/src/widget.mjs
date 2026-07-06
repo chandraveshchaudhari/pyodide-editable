@@ -1,9 +1,4 @@
-import { basicSetup } from "codemirror";
-import { python } from "@codemirror/lang-python";
-import { defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
-import { EditorState } from "@codemirror/state";
-import { EditorView } from "@codemirror/view";
-
+const CODEMIRROR_BASE = "https://cdn.jsdelivr.net/npm/codemirror@5.65.16";
 const PYODIDE_CDN = "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/";
 const DEFAULT_PACKAGES = ["numpy", "pandas", "matplotlib"];
 
@@ -12,13 +7,18 @@ let loadingPromise = null;
 let loadState = "idle";
 let loadError = null;
 const runButtons = new Set();
+const loadedScripts = new Map();
 
 function loadScript(src) {
-  return new Promise((resolve, reject) => {
+  if (loadedScripts.has(src)) return loadedScripts.get(src);
+
+  const promise = new Promise((resolve, reject) => {
     const existing = document.querySelector(`script[src="${src}"]`);
     if (existing) {
       existing.addEventListener("load", resolve, { once: true });
-      existing.addEventListener("error", reject, { once: true });
+      existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+        once: true,
+      });
       resolve();
       return;
     }
@@ -28,6 +28,9 @@ function loadScript(src) {
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
     document.head.appendChild(script);
   });
+
+  loadedScripts.set(src, promise);
+  return promise;
 }
 
 async function loadPyodideRuntime(extraPackages = []) {
@@ -158,6 +161,14 @@ function rootHasElement(el, id) {
 }
 
 function ensureStyles(el) {
+  if (!rootHasElement(el, "pyodide-editable-codemirror-styles")) {
+    const link = document.createElement("link");
+    link.id = "pyodide-editable-codemirror-styles";
+    link.rel = "stylesheet";
+    link.href = `${CODEMIRROR_BASE}/lib/codemirror.min.css`;
+    appendToWidgetRoot(el, link);
+  }
+
   if (rootHasElement(el, "pyodide-editable-widget-styles")) return;
   const style = document.createElement("style");
   style.id = "pyodide-editable-widget-styles";
@@ -172,12 +183,9 @@ function ensureStyles(el) {
 .pyodide-btn-runall{background:#0969da}
 .pyodide-btn-restart{color:#cf222e;font-weight:600}
 .pyodide-lang-badge{font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--color-foreground-muted,#57606a);letter-spacing:.04em}
-.pyodide-editor-host{border-top:1px solid var(--color-border,#d0d7de);border-bottom:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fafbfc)}
-.pyodide-editor-host .cm-editor{min-height:10rem;max-height:26rem;font:0.875rem ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--color-background-primary,#fafbfc)}
-.pyodide-editor-host .cm-scroller{overflow:auto;line-height:1.55}
-.pyodide-editor-host .cm-content{padding:.75rem;caret-color:#0969da}
-.pyodide-editor-host .cm-focused{outline:none}
-.pyodide-editor-host .cm-gutters{border-right:1px solid var(--color-border,#d0d7de);background:var(--color-background-secondary,#f6f8fa)}
+.pyodide-editor-container{min-height:80px;max-height:350px;overflow:auto;resize:vertical;border-top:1px solid var(--color-border,#d0d7de);border-bottom:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fafbfc)}
+.pyodide-editor-container .CodeMirror{height:auto;min-height:80px;font:inherit;line-height:1.55;border:0}
+.pyodide-fallback-textarea{box-sizing:border-box;width:100%;min-height:80px;max-height:350px;resize:vertical;border:0;padding:.75rem;background:var(--color-background-primary,#fafbfc);color:inherit;font:inherit;line-height:1.55}
 .pyodide-output{min-height:2.5rem;max-height:25rem;overflow:auto;padding:.7rem .75rem;border-top:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fff);resize:vertical}
 .pyodide-output[hidden]{display:none}
 .pyodide-output pre{margin:0 0 .4rem!important;padding:0!important;background:transparent!important;border:0!important;color:inherit!important;white-space:pre-wrap;word-break:break-word;font:inherit}
@@ -188,6 +196,12 @@ function ensureStyles(el) {
 .pyodide-timing{font-size:.75rem;color:var(--color-foreground-muted,#8c959f);font-variant-numeric:tabular-nums}
 `;
   appendToWidgetRoot(el, style);
+}
+
+async function ensureCodeMirror() {
+  if (window.CodeMirror) return;
+  await loadScript(`${CODEMIRROR_BASE}/lib/codemirror.min.js`);
+  await loadScript(`${CODEMIRROR_BASE}/mode/python/python.min.js`);
 }
 
 function setStatus(statusText, message, type = "info") {
@@ -297,21 +311,14 @@ function render({ model, el }) {
   controls.append(runButton, clearButton, runAllButton, restartButton);
   header.append(badge, controls);
 
-  const editorHost = document.createElement("div");
-  editorHost.className = "pyodide-editor-host";
-  const cmState = EditorState.create({
-    doc: code,
-    extensions: [
-      basicSetup,
-      python(),
-      syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-      EditorView.lineWrapping,
-    ],
-  });
-  const codeMirrorView = new EditorView({
-    state: cmState,
-    parent: editorHost,
-  });
+  const editorContainer = document.createElement("div");
+  editorContainer.className = "pyodide-editor-container";
+  const textarea = document.createElement("textarea");
+  textarea.value = code;
+  textarea.className = "pyodide-fallback-textarea";
+  textarea.spellcheck = false;
+  textarea.rows = Math.max(4, code.split("\n").length + 1);
+  editorContainer.appendChild(textarea);
 
   const statusBar = document.createElement("div");
   statusBar.className = "pyodide-status-bar";
@@ -326,9 +333,45 @@ function render({ model, el }) {
   outputArea.setAttribute("aria-live", "polite");
   outputArea.hidden = true;
 
-  wrapper.append(header, editorHost, statusBar, outputArea);
+  wrapper.append(header, editorContainer, statusBar, outputArea);
   el.appendChild(wrapper);
   runButtons.add(runButton);
+
+  let cm = null;
+  ensureCodeMirror()
+    .then(() => {
+      if (typeof window.CodeMirror === "undefined") return;
+      try {
+        cm = window.CodeMirror.fromTextArea(textarea, {
+          mode: "python",
+          theme: "default",
+          lineNumbers: true,
+          indentUnit: 4,
+          smartIndent: true,
+          matchBrackets: true,
+          lineWrapping: false,
+          viewportMargin: 20,
+          extraKeys: {
+            "Shift-Enter": () => runButton.click(),
+            Tab: (cmInst) => {
+              if (cmInst.somethingSelected()) {
+                cmInst.indentSelection("add");
+              } else {
+                cmInst.replaceSelection("    ", "end");
+              }
+            },
+          },
+        });
+      } catch (error) {
+        console.warn("[pyodide-editable] CodeMirror failed to initialize; using textarea fallback.", error);
+        cm = null;
+      }
+    })
+    .catch((error) => {
+      console.warn("[pyodide-editable] CodeMirror failed to load; using textarea fallback.", error);
+    });
+
+  const getCode = () => (cm ? cm.getValue() : textarea.value);
 
   clearButton.addEventListener("click", () => {
     outputArea.innerHTML = "";
@@ -379,7 +422,7 @@ function render({ model, el }) {
       }
 
       setStatus(statusText, "Running...", "info");
-      const result = await executePython(codeMirrorView.state.doc.toString(), packages);
+      const result = await executePython(getCode(), packages);
       renderOutput(outputArea, result);
       timing.textContent = `${result.durationMs} ms`;
       setStatus(statusText, result.error ? "Error" : "Done", result.error ? "error" : "success");

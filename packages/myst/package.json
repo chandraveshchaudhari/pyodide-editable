@@ -1,6 +1,6 @@
 {
   "name": "@chandraveshchaudhari/pyodide-editable-myst",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "MyST directive package for pyodide_editable.",
   "type": "module",
   "license": "MIT",

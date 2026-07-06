@@ -1,7 +1,7 @@
 {
   "name": "pyodide_editable",
   "private": true,
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Editable Pyodide-backed Python cells for MyST, HTML, React, and Vue.",
   "type": "module",
   "license": "MIT",
