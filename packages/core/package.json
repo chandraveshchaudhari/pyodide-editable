@@ -1,0 +1,21 @@
+{
+  "name": "@pyodide-editable/core",
+  "version": "0.1.0",
+  "description": "Shared Pyodide runtime and widget renderer for pyodide_editable.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./widget": "./src/widget.mjs",
+    "./widget.mjs": "./src/widget.mjs"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "node ../../scripts/check-package.mjs core",
+    "check": "node ../../scripts/check-package.mjs core",
+    "lint": "node ../../scripts/check-package.mjs core",
+    "test": "node ../../scripts/check-package.mjs core"
+  }
+}

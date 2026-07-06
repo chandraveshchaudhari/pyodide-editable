@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pyodide_editable HTML example</title>
+  </head>
+  <body>
+    <main>
+      <h1>pyodide_editable HTML example</h1>
+      <div id="cell"></div>
+    </main>
+    <script type="module">
+      import { createPyCell } from "../../packages/html/src/index.mjs";
+
+      createPyCell(document.getElementById("cell"), {
+        code: "print('Hello from Pyodide')",
+      });
+    </script>
+  </body>
+</html>

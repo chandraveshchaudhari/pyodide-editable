@@ -1,0 +1,25 @@
+{
+  "name": "@pyodide-editable/myst",
+  "version": "0.1.0",
+  "description": "MyST directive package for pyodide_editable.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./pyodide-editable.mjs",
+    "./pyodide-editable.mjs": "./pyodide-editable.mjs",
+    "./widget.mjs": "./widget.mjs"
+  },
+  "files": [
+    "pyodide-editable.mjs",
+    "widget.mjs"
+  ],
+  "dependencies": {
+    "@pyodide-editable/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check-package.mjs myst",
+    "check": "node ../../scripts/check-package.mjs myst",
+    "lint": "node ../../scripts/check-package.mjs myst",
+    "test": "node ../../scripts/check-package.mjs myst"
+  }
+}

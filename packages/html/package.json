@@ -1,0 +1,22 @@
+{
+  "name": "@pyodide-editable/html",
+  "version": "0.1.0",
+  "description": "Plain HTML helpers for pyodide_editable.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@pyodide-editable/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check-package.mjs html",
+    "check": "node ../../scripts/check-package.mjs html",
+    "lint": "node ../../scripts/check-package.mjs html",
+    "test": "node ../../scripts/check-package.mjs html"
+  }
+}

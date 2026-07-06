@@ -1,0 +1,25 @@
+{
+  "name": "@pyodide-editable/vue",
+  "version": "0.1.0",
+  "description": "Vue component for pyodide_editable.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "vue": ">=3"
+  },
+  "dependencies": {
+    "@pyodide-editable/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check-package.mjs vue",
+    "check": "node ../../scripts/check-package.mjs vue",
+    "lint": "node ../../scripts/check-package.mjs vue",
+    "test": "node ../../scripts/check-package.mjs vue"
+  }
+}

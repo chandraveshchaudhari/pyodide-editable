@@ -1,0 +1,25 @@
+{
+  "name": "@pyodide-editable/react",
+  "version": "0.1.0",
+  "description": "React component for pyodide_editable.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.jsx"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "dependencies": {
+    "@pyodide-editable/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check-package.mjs react",
+    "check": "node ../../scripts/check-package.mjs react",
+    "lint": "node ../../scripts/check-package.mjs react",
+    "test": "node ../../scripts/check-package.mjs react"
+  }
+}
