@@ -1,3 +1,9 @@
+import { basicSetup } from "codemirror";
+import { python } from "@codemirror/lang-python";
+import { defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+
 const PYODIDE_CDN = "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/";
 const DEFAULT_PACKAGES = ["numpy", "pandas", "matplotlib"];
 
@@ -166,7 +172,12 @@ function ensureStyles(el) {
 .pyodide-btn-runall{background:#0969da}
 .pyodide-btn-restart{color:#cf222e;font-weight:600}
 .pyodide-lang-badge{font-size:.72rem;font-weight:700;text-transform:uppercase;color:var(--color-foreground-muted,#57606a);letter-spacing:.04em}
-.pyodide-editor{box-sizing:border-box;display:block;width:100%;min-height:10rem;max-height:26rem;padding:.75rem;border:0;border-radius:0;resize:vertical;background:var(--color-background-primary,#fafbfc);color:inherit;font:inherit;line-height:1.55;tab-size:4;outline:none}
+.pyodide-editor-host{border-top:1px solid var(--color-border,#d0d7de);border-bottom:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fafbfc)}
+.pyodide-editor-host .cm-editor{min-height:10rem;max-height:26rem;font:0.875rem ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--color-background-primary,#fafbfc)}
+.pyodide-editor-host .cm-scroller{overflow:auto;line-height:1.55}
+.pyodide-editor-host .cm-content{padding:.75rem;caret-color:#0969da}
+.pyodide-editor-host .cm-focused{outline:none}
+.pyodide-editor-host .cm-gutters{border-right:1px solid var(--color-border,#d0d7de);background:var(--color-background-secondary,#f6f8fa)}
 .pyodide-output{min-height:2.5rem;max-height:25rem;overflow:auto;padding:.7rem .75rem;border-top:1px solid var(--color-border,#d0d7de);background:var(--color-background-primary,#fff);resize:vertical}
 .pyodide-output[hidden]{display:none}
 .pyodide-output pre{margin:0 0 .4rem!important;padding:0!important;background:transparent!important;border:0!important;color:inherit!important;white-space:pre-wrap;word-break:break-word;font:inherit}
@@ -286,11 +297,21 @@ function render({ model, el }) {
   controls.append(runButton, clearButton, runAllButton, restartButton);
   header.append(badge, controls);
 
-  const textarea = document.createElement("textarea");
-  textarea.className = "pyodide-editor";
-  textarea.value = code;
-  textarea.spellcheck = false;
-  textarea.setAttribute("aria-label", "Python code editor");
+  const editorHost = document.createElement("div");
+  editorHost.className = "pyodide-editor-host";
+  const cmState = EditorState.create({
+    doc: code,
+    extensions: [
+      basicSetup,
+      python(),
+      syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+      EditorView.lineWrapping,
+    ],
+  });
+  const codeMirrorView = new EditorView({
+    state: cmState,
+    parent: editorHost,
+  });
 
   const statusBar = document.createElement("div");
   statusBar.className = "pyodide-status-bar";
@@ -305,7 +326,7 @@ function render({ model, el }) {
   outputArea.setAttribute("aria-live", "polite");
   outputArea.hidden = true;
 
-  wrapper.append(header, textarea, statusBar, outputArea);
+  wrapper.append(header, editorHost, statusBar, outputArea);
   el.appendChild(wrapper);
   runButtons.add(runButton);
 
@@ -358,7 +379,7 @@ function render({ model, el }) {
       }
 
       setStatus(statusText, "Running...", "info");
-      const result = await executePython(textarea.value, packages);
+      const result = await executePython(codeMirrorView.state.doc.toString(), packages);
       renderOutput(outputArea, result);
       timing.textContent = `${result.durationMs} ms`;
       setStatus(statusText, result.error ? "Error" : "Done", result.error ? "error" : "success");

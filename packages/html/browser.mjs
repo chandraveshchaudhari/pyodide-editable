@@ -1,4 +1,4 @@
-import { render } from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-core@0.1.2";
+import { render } from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-core@0.1.3";
 
 export function createPyCell(el, options = {}) {
   render({

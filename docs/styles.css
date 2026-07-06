@@ -140,10 +140,19 @@ h2 {
 
 .demo-card header {
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .demo-surface {
-  padding: 0.2rem 0;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.demo-surface .pyodide-wrapper {
+  margin-top: 0.35rem;
 }
 
 .demo-error {

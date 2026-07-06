@@ -12,7 +12,7 @@ Maintained by [Chandravesh Chaudhari](https://github.com/chandraveshchaudhari). 
 <div id="cell"></div>
 
 <script type="module">
-  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.2/browser.mjs";
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.3/browser.mjs";
 
   createPyCell(document.getElementById("cell"), {
     code: "print('Hello from Pyodide')",

@@ -1,6 +1,6 @@
 {
   "name": "@chandraveshchaudhari/pyodide-editable-core",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shared Pyodide runtime and widget renderer for pyodide_editable.",
   "type": "module",
   "license": "MIT",
@@ -32,6 +32,13 @@
     "README.md",
     "src"
   ],
+  "dependencies": {
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/language": "^6.11.3",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.3",
+    "codemirror": "^6.0.2"
+  },
   "scripts": {
     "build": "node ../../scripts/check-package.mjs core",
     "check": "node ../../scripts/check-package.mjs core",
