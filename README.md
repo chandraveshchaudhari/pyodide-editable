@@ -13,6 +13,23 @@ MyST plugin behavior.
 - `@pyodide-editable/react`: React wrapper component.
 - `@pyodide-editable/vue`: Vue wrapper component.
 
+## Plain HTML Usage
+
+After the packages are published to npm, a basic webpage can use the HTML
+package through a CDN:
+
+```html
+<div id="cell"></div>
+
+<script type="module">
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@pyodide-editable/html@0.1.0/browser.mjs";
+
+  createPyCell(document.getElementById("cell"), {
+    code: "print('Hello from Pyodide')",
+  });
+</script>
+```
+
 ## MyST Usage
 
 Add the MyST plugin:

@@ -19,9 +19,12 @@
     "html"
   ],
   "exports": {
-    ".": "./src/index.mjs"
+    ".": "./src/index.mjs",
+    "./browser.mjs": "./browser.mjs"
   },
   "files": [
+    "README.md",
+    "browser.mjs",
     "src"
   ],
   "dependencies": {
