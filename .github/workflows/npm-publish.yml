@@ -1,0 +1,52 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      - name: Use latest npm for OIDC
+        run: npm install -g npm@latest
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Check packages
+        run: corepack pnpm -r check
+
+      - name: Pack packages
+        run: |
+          mkdir -p dist-packages
+          corepack pnpm --dir packages/core pack --pack-destination ../../dist-packages
+          corepack pnpm --dir packages/html pack --pack-destination ../../dist-packages
+          corepack pnpm --dir packages/myst pack --pack-destination ../../dist-packages
+          corepack pnpm --dir packages/react pack --pack-destination ../../dist-packages
+          corepack pnpm --dir packages/vue pack --pack-destination ../../dist-packages
+
+      - name: Publish packages
+        run: |
+          npm publish dist-packages/pyodide-editable-core-*.tgz --access public
+          npm publish dist-packages/pyodide-editable-html-*.tgz --access public
+          npm publish dist-packages/pyodide-editable-myst-*.tgz --access public
+          npm publish dist-packages/pyodide-editable-react-*.tgz --access public
+          npm publish dist-packages/pyodide-editable-vue-*.tgz --access public

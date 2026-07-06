@@ -56,3 +56,20 @@ The original directive names and options are preserved.
 pnpm install
 pnpm check
 ```
+
+## Publishing
+
+This repo includes `.github/workflows/npm-publish.yml` for npm Trusted
+Publishing through GitHub Actions.
+
+Configure each npm package with the same Trusted Publisher:
+
+- Provider: GitHub Actions
+- Organization or user: `chandraveshchaudhari`
+- Repository: `pyodide-editable`
+- Workflow filename: `npm-publish.yml`
+- Environment name: leave blank
+- Allowed action: `npm publish`
+
+Then run the `Publish to npm` workflow from GitHub Actions, or push a release
+tag such as `v0.1.0`.
