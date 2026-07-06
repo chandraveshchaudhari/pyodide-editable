@@ -22,11 +22,28 @@ function mountCell(targetId, options) {
 
 mountCell("html-demo", {
   id: "html-demo-cell",
-  packages: ["numpy"],
+  packages: ["pandas", "matplotlib"],
   code: [
-    "import numpy as np",
-    "values = np.array([1, 2, 3, 4])",
-    "print('sum =', int(values.sum()))",
+    "import pandas as pd",
+    "import matplotlib.pyplot as plt",
+    "",
+    "# Create sample sales data",
+    "data = {",
+    "    'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],",
+    "    'Sales_A': [150, 200, 180, 220, 250, 210],",
+    "    'Sales_B': [90, 120, 140, 130, 170, 160]",
+    "}",
+    "df = pd.DataFrame(data)",
+    "",
+    "# Plot both lines on the same chart",
+    "df.plot(x='Month', y=['Sales_A', 'Sales_B'], kind='line', marker='o')",
+    "",
+    "# Customize using standard Matplotlib syntax",
+    "plt.title('Monthly Sales Performance')",
+    "plt.ylabel('Revenue ($)')",
+    "plt.grid(True)",
+    "",
+    "# Display the plot",
   ].join("\n"),
 });
 
