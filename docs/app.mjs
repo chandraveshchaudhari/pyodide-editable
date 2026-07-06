@@ -1,6 +1,6 @@
-import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.4/browser.mjs";
-import { render as renderCore } from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-core@0.1.4";
-import mystPlugin from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-myst@0.1.4";
+import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.3/browser.mjs";
+import { render as renderCore } from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-core@0.1.3";
+import mystPlugin from "https://esm.sh/@chandraveshchaudhari/pyodide-editable-myst@0.1.3";
 import React from "https://esm.sh/react@18.3.1";
 import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
 import { createApp, h, onMounted, ref as vueRef, watch } from "https://esm.sh/vue@3.5.13";

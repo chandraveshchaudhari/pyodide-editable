@@ -89,6 +89,8 @@ h2 {
 
 h1 {
   font-size: clamp(2.6rem, 6vw, 5.2rem);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 h2 {
@@ -125,6 +127,10 @@ h2 {
 .hero-card ul {
   padding-left: 1.1rem;
   margin: 1rem 0 0;
+}
+
+.hero-card h2 {
+  margin-top: 0.15rem;
 }
 
 .demo-grid {
