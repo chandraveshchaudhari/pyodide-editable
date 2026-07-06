@@ -24,7 +24,7 @@ package through a CDN:
 <div id="cell"></div>
 
 <script type="module">
-  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.0/browser.mjs";
+  import { createPyCell } from "https://cdn.jsdelivr.net/npm/@chandraveshchaudhari/pyodide-editable-html@0.1.1/browser.mjs";
 
   createPyCell(document.getElementById("cell"), {
     code: "print('Hello from Pyodide')",
@@ -74,4 +74,4 @@ Configure each npm package with the same Trusted Publisher:
 - Allowed action: `npm publish`
 
 Then run the `Publish to npm` workflow from GitHub Actions, or push a release
-tag such as `v0.1.0`.
+tag such as `v0.1.1`.
